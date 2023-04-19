@@ -1,7 +1,3 @@
-import IconCar from '../assets/img/panelcon/icon_car.svg';
-import Meat from '../assets/img/panelcon/meat.png';
-import Meat1 from '../assets/img/panelcon/meat1.jpg';
-import Meat2 from '../assets/img/panelcon/meat2.jpg';
 
 export const Panel = () => {
   return (

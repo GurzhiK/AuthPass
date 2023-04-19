@@ -5,10 +5,10 @@ function Sort({ value, onChangeSort }) {
   const [open, setOpen] = React.useState(false);
   const list = [
     { name: '', sortProperty: '' },
-    { name: 'цене ↑', sortProperty: 'price' },
-    { name: 'цене ↓', sortProperty: '-price' },
-    { name: 'алфавиту ↑', sortProperty: '-title' },
-    { name: 'алфавиту ↓', sortProperty: 'title' },
+    { name: 'цене ↑', sortProperty: 'price' },
+    { name: 'цене ↓', sortProperty: '-price' },
+    { name: 'алфавиту ↑', sortProperty: '-title' },
+    { name: 'алфавиту ↓', sortProperty: 'title' },
   ];
 
   const onClickListItem = (i) => {
