@@ -17,6 +17,11 @@ module.exports = {
       white: 'white',
       black: '#272727',
       beige: '#e0e0e0',
+      orange: {
+        400: '#facc15',
+        500: '#eab308',
+        600: '#d97706',
+      },
       green: {
         400: 'rgb(163 230 530);',
         500: 'rgb(132 204 22)',

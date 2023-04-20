@@ -2,11 +2,11 @@
 export const Panel = () => {
   return (
     <>
-      <section className=" px-[10vh] mt-24 ">
+      <section className=" px-[10vh] mt-24 sm:px-8">
         {/* Блоки с плюсами Заголовок*/}
         <div className="text-left ">
           <div>
-            <h2 className=" text-secondary font-bold text-[60px] mt-20 mb-12 bg-backgroundAll md:text-[40px]">Достоинства</h2>
+            <h2 className=" text-secondary font-bold text-[60px] mt-20 mb-12 bg-backgroundAll md:text-[40px] md:text-center">Достоинства</h2>
           </div>
         </div>
         <div className=" rounded-md border-2 border-[#2E2E2E] flex bg-[#2020208e] p-14 lg:p-0 lg:bg-transparent lg:border-none justify-between lg:flex-col lg:items-center flex-wrap  mb-[25vh]">

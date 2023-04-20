@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { motion, AnimatePresence } from 'framer-motion';
-
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import CartObject from '../components/CartObject';
 import Categories from '../components/Categories';
 import Panel from '../components/Panel';
 import Skeleton from '../components/CartObject/Skeleton';
 import Sort from '../components/Sort';
-// import { SearchContext } from '../App';
 
 const Home = () => {
-  // const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryId, setCategoryId] = useState(0);
@@ -20,22 +17,25 @@ const Home = () => {
   });
 
   useEffect(() => {
-    setIsLoading(true);
+    const API_URL = 'https://gurzhapi.space/api';
 
-    const sortBy = sortType.sortProperty.replace('-', '-');
-    const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
-    const category = categoryId > 0 ? `category=${categoryId}` : '';
-    // const search = searchValue ? `&search=${searchValue}` : '';
-    // axios.get(`http://127.0.0.1:8000/api/products/?ordering=title${sortBy}&ordering=${sortBy}&${category}&order=${order}&${search}&`)
-    // axios.get(`http://127.0.0.1:8000/api/products/?ordering=title${sortBy}&ordering=${sortBy}&${category}&order=${order}&`)
-    // axios.get(`https://gurzhapi.space/api/products/?ordering=title${sortBy}&ordering=${sortBy}&${category}&order=${order}&`)
-    axios.get(`https://gurzhapi.space/api/products/?ordering=title${sortBy}&ordering=${sortBy}&${category}&order=${order}&`)
-      .then(res => {
-        setItems(res.data);
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      const category = categoryId > 0 ? `category=${categoryId}&` : '';
+      try {
+        const response = await axios.get(
+          `${API_URL}/products/?${category}&ordering=${sortType.sortProperty}`
+        );
+
+        setItems(response.data);
         setIsLoading(false);
-      })
-      .catch(err => console.log(err));
-  }, [categoryId, sortType]); //[categoryId, sortType, searchValue]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [categoryId, sortType]);
 
   const meats = items.map(obj => (
     <motion.div
@@ -52,10 +52,12 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-full h-[100vh] bg-no-repeat bg-cover bg-fixed bg-background">
-        <div className=" flex flex-col items-left px-[100px] gap-4">
-          <h1 className="text-[#fff] text-[60px] text-left font-bold mt-[35vh] lg:text-center md:text-[40px]">
-            СВЕЖЕЕ МЯСО <br />ЗАЛОГ ЗДОРОВОГО<br /> ЖЕЛУДКА
+      <div className="w-full h-[100vh] bg-no-repeat bg-cover bg-fixed bg-background ">
+        <div className=" flex flex-col items-left px-[100px] lp:px-0 gap-4">
+          <h1 className="text-[#fff] text-[60px] text-left font-bold mt-[35vh] lg:text-center md:text-[40px] sm:text-[30px] sm:text-center">
+            СВЕЖЕЕ МЯСО
+            <br />ЗАЛОГ ЗДОРОВОГО
+            <br />ЖЕЛУДКА
           </h1>
           <p className="text-gray-400 text-xl font-main lg:text-center">
             Адекватное качество по реальной цене
@@ -63,12 +65,12 @@ const Home = () => {
         </div>
       </div>
 
-      <section className="bg-backgroundAll  py-[8vh] px-[10vh]">
+      <section className="bg-backgroundAll  py-[8vh] px-[10vh] sm:px-0">
 
         {/* Каталог товаров Заголовок*/}
         <div className="text-left ">
           <div>
-            <h2 className="text-secondary font-bold text-[60px] mt-20 mb-12 bg-backgroundAll ">Каталог</h2>
+            <h2 className="text-secondary font-bold text-[60px] mt-20 mb-12 bg-backgroundAll md:text-center">Каталог</h2>
           </div>
         </div>
 
@@ -78,8 +80,7 @@ const Home = () => {
           <Sort value={sortType} onChangeSort={(i) => setSortType(i)} />
           <AnimatePresence>
             <div className="grid gap-x-[40px] gap-y-[65px] grid-cols-4 grid-rows-1 justify-items-center xl:grid-cols-2 xl:grid-rows-2 1xl:grid-cols-3 md:grid-cols-1">
-              {
-                isLoading ? skeletons : meats}
+              {isLoading ? skeletons : meats}
             </div>
           </AnimatePresence>
         </section>

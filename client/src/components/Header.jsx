@@ -26,7 +26,7 @@ function Header() {
       </div>
       {/* MOBILE-MENU  */}
       <nav>
-        <section className="md:flex header:hidden lg:flex fixed w-full bg-[#27272780] z-10 backdrop-blur-[5px]">
+        <section className="md:flex header:hidden lg:flex fixed w-full bg-[#27272780] z-10 backdrop-blur-[5px] lg:flex-col">
           <div className="flex items-center justify-around w-full">
 
             <div
@@ -42,7 +42,7 @@ function Header() {
 
 
           </div>
-          <div className={isNavOpen ? "fixed duration-300 backdrop-blur-md w-full h-[100vh] t-0 l-0 bg-[#272727c9] z-40 flex flex-col justify-evenly items:center" : "hidden"} onClick={() => setIsNavOpen(false)}>
+          <div className={isNavOpen ? "duration-300 w-full h-[100vh] t-0 l-0 z-40 flex flex-col justify-evenly items:center sticky" : "hidden"} onClick={() => setIsNavOpen(false)}>
             <div
               className="absolute top-0 right-0 px-8 py-9"
               onClick={() => setIsNavOpen(false)}
