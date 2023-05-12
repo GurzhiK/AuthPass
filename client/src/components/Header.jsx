@@ -15,7 +15,7 @@ function Header() {
         <ul className="flex flex-row gap-x-[64px] float-left w-full ml-[64px] font-html flex-wrap items-center">
           <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/">Главная</Link></li>
           <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/">Товары</Link></li>
-          <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/">О нас</Link></li>
+          <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/AboutUs">О нас</Link></li>
           <Search />
         </ul>
 
@@ -69,7 +69,7 @@ function Header() {
                 <Link to='/' >Товары</Link>
               </li>
               <li>
-                <Link to='ShopCart' >О нас</Link>
+                <Link to='/AboutUs' >О нас</Link>
               </li>
               <li>
                 <Link to='Profile'>Профиль</Link>

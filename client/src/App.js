@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -7,12 +7,17 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import CartPage from './pages/CartPage';
 import ShopCart from './pages/ShopCart';
-import CartObject from './components/CartObject';
+import AboutUs from './pages/AboutUs';
 
 export const SearchContext = React.createContext();
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="bg-backgroundAll">
@@ -23,6 +28,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/CartPage/:id' element={<CartPage />} />
             <Route path='/ShopCart' element={<ShopCart />} />
+            <Route path='/AboutUs' element={<AboutUs />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>

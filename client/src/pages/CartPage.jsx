@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import TabsRender from './../components/TabsText/index';
 
 function CartPage() {
   const { id } = useParams();
@@ -17,30 +18,40 @@ function CartPage() {
 
   return (
     <div>
-      <div className="px-40 py-40 justify-around flex-wrap rounded-md min-h-[90vh] grid grid-flow-col content-around gap-5 lg:px-14 lg:justify-between sm:justify-center sm:px-2 sm:grid-flow-row justify-items-center">
-        <div className="max-w-[50vw] sm:min-w-[70vw] min-h-[40vh] bg-cover">
-          <img src={product.imageUrl} alt="img" className="rounded-md" />
-        </div>
-        <div>
-          <div className="text-white">
-            <h1 className="text-[35px] text-main font-bold">{product.title}</h1>
-            <h2 className="text-lg text-gray-600">Описание </h2>
-            <p>{product.description}</p>
-          </div>
-          <div className="text-gray-600 mt-5">
-            <h2>Категория</h2>
-            <ul className="flex">
-              <li className="border-b-[1px] border-gray-600">Мясо</li>
-              <li>Говядина</li>
-              <li>Новинки</li>
-              <li>{product.category}</li>
-            </ul>
+
+      <div className=" px-40 py-40 justify-around flex-wrap rounded-lg min-h-[90vh]  lg:px-14 lg:justify-between sm:justify-center sm:px-2 sm:grid-flow-row justify-items-center">
+        <div className="rounded-lg bg-[#2020208e] border-2 border-[#2E2E2E] lg:bg-transparent lg:border-none p-8 grid grid-flow-col content-around gap-12 lg:grid-flow-row">
+          <div className="max-w-[50vw] sm:min-w-[70vw] min-h-[40vh] bg-cover">
+            <img src={product.imageUrl} alt="img" className="rounded-lg" />
           </div>
           <div>
-            <button href="#" className="text-white hover:text-gray-800 font-bold bg-main hover:bg-main duration-300 rounded-md text-[17px] w-44 h-10 mt-8 ">В корзину</button>
+            <div className="text-white">
+              <h1 className="text-[35px] text-main font-bold">{product.title}</h1>
+              <h2 className="text-lg text-gray-600">Описание </h2>
+              <p className="font-normal">{product.description}</p>
+            </div>
+            <div className="text-gray-600 mt-5">
+              <h2>Категория</h2>
+              <ul className="flex">
+                <li className="border-b-[1px] border-gray-600">Мясо</li>
+                <li>Говядина</li>
+                <li>Новинки</li>
+                <li>{product.category}</li>
+              </ul>
+              <h2 className="mt-5">
+                Состав:
+              </h2>
+              <p>Мясо птицы</p>
+            </div>
+            <div className="lg:float-right">
+              <div>
+                <button href="#" className="text-white hover:text-gray-800 font-bold bg-main hover:bg-main duration-300 rounded-lg text-[17px] w-44 h-10 mt-8 ">В корзину</button>
+              </div>
+              <Link to='/'><button className="bg-transparent w-44 h-10 rounded-lg border-2 border-gray-700 text-gray-500 hover:bg-gray-700 hover:text-white duration-300 mt-3">Вернуться назад</button></Link>
+            </div>
           </div>
-          <Link to='/'><button className="bg-transparent w-44 h-10 rounded-md border-2 border-gray-700 text-gray-500 hover:bg-gray-700 hover:text-white duration-300 mt-3">Вернуться назад</button></Link>
         </div>
+        <TabsRender />
       </div>
     </div>
   )

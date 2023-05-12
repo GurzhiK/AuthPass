@@ -30,7 +30,7 @@ function Sort({ value, onChangeSort }) {
         <button className="text-gray-500 hover:text-gray-400 duration-300 ml-4" onClick={onResetSort}>Сбросить</button>
       </div>
       {open && (
-        <div className="pt-4 pb-4 bg-[#fff] absolute z-10 my-8 shadow-[#272727] shadow-lg text-center rounded-md h-[full] w-[150px] ml-[140px] text-[17px] lg:items-center lg:m-0 lg:my-9">
+        <div className="pt-4 pb-4 bg-[#fff] absolute z-10 my-8 shadow-[#272727] shadow-lg text-center rounded-lg h-[full] w-[150px] ml-[140px] text-[17px] lg:items-center lg:m-0 lg:my-9">
           <ul>
             {list.map((obj, i) => (
               <li

@@ -10,8 +10,8 @@ function CartObject({ title, price, imageUrl, id, stock }) {
   return (
     <>
       <Link to={`/CartPage/${id}`}>
-        <div className="w-[300px] h-[420px] bg-[#e0e0e0] rounded-[10px] px-[15px] py-[15px] hover:shadow-gray-900 hover:shadow-lg hover:scale-[1.05] -z-0 duration-300 easy-out">
-          <img src={imageUrl} alt="" className="w-[270px] h-[200px] rounded-[10px] " />
+        <div className="w-[300px] h-[420px] bg-[#e0e0e0] rounded-lg px-[15px] py-[15px] hover:shadow-gray-900 hover:shadow-lg hover:scale-[1.05] -z-0 duration-300 easy-out">
+          <img src={imageUrl} alt="" className="w-[270px] h-[200px] rounded-lg" />
 
           <p className="text-[16px] mt-[10px] whitespace-nowrap overflow-hidden text-ellipsis">{title}</p>
 
@@ -20,7 +20,7 @@ function CartObject({ title, price, imageUrl, id, stock }) {
           {/* Добавляем класс stockClass, который выбирает цвет текста */}
           <p className={`text-16 ${stockClass} ${stockTextClass}`}>{stockText}</p>
           <div className="flex justify-end">
-            <b href="#" className="text-white hover:text-gray-800 font-bold bg-main hover:bg-black duration-300 text-[17px] py-[10px] px-[30px] w-fit mt-[1vh] rounded-md">В корзину</b>
+            <b className="text-white hover:text-gray-800 font-bold bg-main hover:bg-black duration-300 text-[17px] py-[10px] px-[30px] w-fit mt-[1vh] rounded-lg">В корзину</b>
           </div>
         </div>
       </Link>

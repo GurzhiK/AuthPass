@@ -6,7 +6,7 @@ import Categories from '../components/Categories';
 import Panel from '../components/Panel';
 import Skeleton from '../components/CartObject/Skeleton';
 import Sort from '../components/Sort';
-
+import ReactPaginate from 'react-paginate';
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,19 +15,17 @@ const Home = () => {
     name: '',
     sortProperty: '',
   });
-
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 8; //Количество отображаемых на странице товаров
   useEffect(() => {
     const API_URL = 'https://gurzhapi.space/api';
-
     const fetchData = async () => {
       setIsLoading(true);
-
       const category = categoryId > 0 ? `category=${categoryId}&` : '';
       try {
         const response = await axios.get(
           `${API_URL}/products/?${category}&ordering=${sortType.sortProperty}`
         );
-
         setItems(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -36,8 +34,7 @@ const Home = () => {
     };
     fetchData();
   }, [categoryId, sortType]);
-
-  const meats = items.map(obj => (
+  const meats = items.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map(obj => (
     <motion.div
       key={obj.id}
       initial={{ opacity: 0, y: 100 }}
@@ -47,9 +44,11 @@ const Home = () => {
       <CartObject {...obj} />
     </motion.div>
   ));
-
   const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
-
+  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const handlePageClick = ({ selected: selectedPage }) => {
+    setCurrentPage(selectedPage);
+  };
   return (
     <div>
       <div className="w-full h-[100vh] bg-no-repeat bg-cover bg-fixed bg-background ">
@@ -64,18 +63,13 @@ const Home = () => {
           </p>
         </div>
       </div>
-
       <section className="bg-backgroundAll  py-[8vh] px-[10vh] sm:px-0">
-
-        {/* Каталог товаров Заголовок*/}
         <div className="text-left ">
           <div>
             <h2 className="text-secondary font-bold text-[60px] mt-20 mb-12 bg-backgroundAll md:text-center">Каталог</h2>
           </div>
         </div>
-
-        {/* каталог товаров на главной странице */}
-        <section className="rounded-md bg-[#2020208e] border-2 border-[#2E2E2E] lg:bg-transparent lg:border-none py-8">
+        <section className="rounded-lg bg-[#2020208e] border-2 border-[#2E2E2E] lg:bg-transparent lg:border-none py-8">
           <Categories value={categoryId} onChangeCategory={(i) => setCategoryId(i)} />
           <Sort value={sortType} onChangeSort={(i) => setSortType(i)} />
           <AnimatePresence>
@@ -83,13 +77,23 @@ const Home = () => {
               {isLoading ? skeletons : meats}
             </div>
           </AnimatePresence>
+          <div className='mt-14'>
+            <ReactPaginate
+              previousLabel={'Назад'}
+              nextLabel={'Вперед'}
+              breakLabel={'...'}
+              pageCount={pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={3}
+              onPageChange={handlePageClick}
+              containerClassName={'flex gap-10 p-4 justify-center items-center text-white decoration-none'}
+              activeClassName={'bg-main rounded-lg text-white p-2'}
+            />
+          </div>
         </section>
-
       </section>
       {/* items.map((obj) => <CartObject key={obj.id} {...obj} />) */}
       <Panel />
-
-
     </div>
   )
 }
