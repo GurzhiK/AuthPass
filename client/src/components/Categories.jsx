@@ -22,8 +22,12 @@ function Categories({ value = 0, onChangeCategory }) {
     <div>
       <ul className="flex-row gap-4 flex-wrap lg:flex-col lg:items-center justify-center flex text-[20px]">
         {categories.map((category, i) => (
-          <li key={category.id} onClick={() => onChangeCategory(category.id)} className={value === category.id || (value === 0 && i === 0) ? active : nonActive}>
-            <h1 className="px-5">{category.name}</h1>
+          <li
+            key={category.id}
+            onClick={() => onChangeCategory(category.id)}
+            className={value === category.id || (value === 0 && i === 0) ? active : nonActive}
+          >
+            <h1 className="category-name">{category.name}</h1>
           </li>
         ))}
       </ul>

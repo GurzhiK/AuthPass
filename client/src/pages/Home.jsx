@@ -7,6 +7,7 @@ import Panel from '../components/Panel';
 import Skeleton from '../components/CartObject/Skeleton';
 import Sort from '../components/Sort';
 import ReactPaginate from 'react-paginate';
+
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,7 @@ const Home = () => {
   });
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 8; //Количество отображаемых на странице товаров
+
   useEffect(() => {
     const API_URL = 'https://gurzhapi.space/api';
     const fetchData = async () => {
@@ -33,6 +35,7 @@ const Home = () => {
       }
     };
     fetchData();
+    setCurrentPage(0); // добавляем сброс пагинации при изменении категории
   }, [categoryId, sortType]);
   const meats = items.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map(obj => (
     <motion.div
@@ -44,7 +47,9 @@ const Home = () => {
       <CartObject {...obj} />
     </motion.div>
   ));
+
   const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
+
   const pageCount = Math.ceil(items.length / itemsPerPage);
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage);
@@ -88,6 +93,7 @@ const Home = () => {
               onPageChange={handlePageClick}
               containerClassName={'flex gap-10 p-4 justify-center items-center text-white decoration-none'}
               activeClassName={'bg-main rounded-lg text-white p-2'}
+              forcePage={currentPage} // устанавливаем значение currentPage для пагинации
             />
           </div>
         </section>
