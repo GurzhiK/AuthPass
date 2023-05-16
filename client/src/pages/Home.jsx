@@ -7,7 +7,7 @@ import Panel from '../components/Panel';
 import Skeleton from '../components/CartObject/Skeleton';
 import Sort from '../components/Sort';
 import ReactPaginate from 'react-paginate';
-
+export const API_URL = 'https://gurzhapi.space/api';
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,13 +20,13 @@ const Home = () => {
   const itemsPerPage = 8; //Количество отображаемых на странице товаров
 
   useEffect(() => {
-    const API_URL = 'https://gurzhapi.space/api';
+    // const API_URL = 'https://gurzhapi.space/api';
     const fetchData = async () => {
       setIsLoading(true);
-      const category = categoryId > 0 ? `category=${categoryId}&` : '';
+      const category = categoryId ? `category=${categoryId}&` : '';
       try {
         const response = await axios.get(
-          `${API_URL}/products/?${category}&ordering=${sortType.sortProperty}`
+          `${API_URL}/products/?${category}ordering=${sortType.sortProperty}`
         );
         setItems(response.data);
         setIsLoading(false);
@@ -37,6 +37,7 @@ const Home = () => {
     fetchData();
     setCurrentPage(0); // добавляем сброс пагинации при изменении категории
   }, [categoryId, sortType]);
+
   const meats = items.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map(obj => (
     <motion.div
       key={obj.id}
@@ -68,7 +69,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <section className="bg-backgroundAll  py-[8vh] px-[10vh] sm:px-0">
+      <section className="bg-backgroundAll py-[8vh] px-[10vh] sm:px-0">
         <div className="text-left ">
           <div>
             <h2 className="text-secondary font-bold text-[60px] mt-20 mb-12 bg-backgroundAll md:text-center">Каталог</h2>
@@ -94,6 +95,7 @@ const Home = () => {
               containerClassName={'flex gap-10 p-4 justify-center items-center text-white decoration-none'}
               activeClassName={'bg-main rounded-lg text-white p-2'}
               forcePage={currentPage} // устанавливаем значение currentPage для пагинации
+
             />
           </div>
         </section>

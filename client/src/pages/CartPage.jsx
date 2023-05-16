@@ -18,8 +18,7 @@ function CartPage() {
 
   return (
     <div>
-
-      <div className=" px-40 py-40 justify-around flex-wrap rounded-lg min-h-[90vh]  lg:px-14 lg:justify-between sm:justify-center sm:px-2 sm:grid-flow-row justify-items-center">
+      <div className="px-40 py-40 justify-around flex-wrap rounded-lg min-h-[90vh] lg:px-14 lg:justify-between sm:justify-center sm:px-2 sm:grid-flow-row justify-items-center">
         <div className="rounded-lg bg-[#2020208e] border-2 border-[#2E2E2E] lg:bg-transparent lg:border-none p-8 grid grid-flow-col content-around gap-12 lg:grid-flow-row">
           <div className="max-w-[50vw] sm:min-w-[70vw] min-h-[40vh] bg-cover">
             <img src={product.imageUrl} alt="img" className="rounded-lg" />

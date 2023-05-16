@@ -14,14 +14,15 @@ function Header() {
         <Link to="/"><img src={Logo} alt="text" /></Link>
         <ul className="flex flex-row gap-x-[64px] float-left w-full ml-[64px] font-html flex-wrap items-center">
           <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/">Главная</Link></li>
-          <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/">Товары</Link></li>
           <li className="text-[#fff] text-[16px] hover:text-mainLight duration-300"><Link to="/AboutUs">О нас</Link></li>
           <Search />
         </ul>
 
         <div className="flex flex-row gap-x-[36px]">
-          <Link to="/shopcart"><img src={Basket} alt="cart" className="min-w-[35px]" /></Link>
+          <Link to="/Auth"><h1 className="text-white">Войти</h1></Link>
+          <Link to="/reg"><h1 className="text-white">Зарегистрироваться</h1></Link>
           <img src={Profile_icon} alt="text" />
+          <Link to="/shopcart"><img src={Basket} alt="cart" className="min-w-[35px]" /></Link>
         </div>
       </div>
       {/* MOBILE-MENU  */}
@@ -64,9 +65,6 @@ function Header() {
             <ul className="flex flex-col items-center justify-between min-h-[250px] text-white text-2xl" onClick={() => setIsNavOpen(false)}>
               <li>
                 <Link to='/' >Главная</Link>
-              </li>
-              <li>
-                <Link to='/' >Товары</Link>
               </li>
               <li>
                 <Link to='/AboutUs' >О нас</Link>

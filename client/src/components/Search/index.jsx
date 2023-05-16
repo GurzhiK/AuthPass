@@ -51,7 +51,7 @@ const Search = () => {
         {/* поле ввода поиска */}
         <input
           type="text"
-          className="flex w-full py-2 pl-10 pr-3 leading-5 text-gray-900 placeholder-gray-500 bg-[#ffffff86] border-none rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          className="flex w-full py-2 pl-10 pr-3 leading-5 text-gray-900 placeholder-gray-500 text-gray-700 bg-[#ffffff86] border-none rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           placeholder="Поиск товаров"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}

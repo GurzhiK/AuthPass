@@ -23,7 +23,7 @@ function Sort({ value, onChangeSort }) {
   };
 
   return (
-    <div className="flex flex-col text-[292929] px-[6vh] mb-8 pt-8 flex-wrap text-[17px] lg:items-center " >
+    <div className="flex flex-col text-[#292929] px-[6vh] mb-8 pt-8 flex-wrap text-[17px] lg:items-center " >
       <div className="flex flex-wrap">
         <b className="text-white">Сортировка по:  </b>
         <span className="text-main duration-300 hover:text-mainLight font-light flex ml-1 cursor-pointer border-main" onClick={() => setOpen(!open)}> {value.name} <img src={ArrowDown} alt='arrow' className="ml-2 cursor-pointer" /></span>
