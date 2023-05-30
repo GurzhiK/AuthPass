@@ -19,9 +19,9 @@ function Header() {
         </ul>
 
         <div className="flex flex-row gap-x-[36px]">
-          <Link to="/Auth"><h1 className="text-white">Войти</h1></Link>
+          <Link to="/Login"><h1 className="text-white">Войти</h1></Link>
           <Link to="/reg"><h1 className="text-white">Зарегистрироваться</h1></Link>
-          <img src={Profile_icon} alt="text" />
+          <Link to='/MyPage'><img src={Profile_icon} alt="text" /></Link>
           <Link to="/shopcart"><img src={Basket} alt="cart" className="min-w-[35px]" /></Link>
         </div>
       </div>

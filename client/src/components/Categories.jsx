@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../api/api';
 
 function Categories({ value = 0, onChangeCategory }) {
   const [categories, setCategories] = useState([]);
@@ -9,7 +10,7 @@ function Categories({ value = 0, onChangeCategory }) {
   const active = "font-bold easy-in duration-300  flex text-center justify-center items-center text-white rounded-lg border-main bg-main border-2 w-[150px] h-[40px]"
 
   useEffect(() => {
-    axios.get('https://gurzhapi.space/api/categories/')
+    axios.get(`${API_URL}/categories/`)
       .then((response) => {
         setCategories([{ id: 0, name: 'Все' }, ...response.data]);
       })

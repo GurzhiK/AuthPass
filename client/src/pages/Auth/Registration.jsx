@@ -1,11 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { API_URL } from '../Home';
 import axios from 'axios';
 import { FieldInput } from './StylesInput';
 import { LabelTitle } from './StylesInput';
 import { SubmitButton } from './StylesInput';
+import { API_URL } from '../../api/api';
 
 const Registration = () => {
   return (

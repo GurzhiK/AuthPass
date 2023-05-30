@@ -7,7 +7,9 @@ import Panel from '../components/Panel';
 import Skeleton from '../components/CartObject/Skeleton';
 import Sort from '../components/Sort';
 import ReactPaginate from 'react-paginate';
-export const API_URL = 'https://gurzhapi.space/api';
+// import { API_URL } from './api/api';
+import { API_URL } from '../api/api';
+
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
