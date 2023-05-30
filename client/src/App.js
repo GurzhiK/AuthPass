@@ -18,6 +18,7 @@ import Signup from './pages/Containers/Signup';
 import ResetPassword from './pages/Containers/ResetPassword';
 import ResetPasswordConfirm from './pages/Containers/ResetPasswordConfirm';
 import Activate from './pages/Containers/Activate';
+import Layout from './hocs/Layout';
 export const SearchContext = React.createContext();
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
     <div className="bg-backgroundAll">
       <Provider store={store}>
         <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-          <Header />
+          <Layout />
           <div>
             <Routes>
               <Route path='/' element={<Home />} />
