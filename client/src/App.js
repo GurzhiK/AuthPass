@@ -40,17 +40,12 @@ function App() {
               <Route path='/CartPage/:id' element={<CartPage />} />
               <Route path='/ShopCart' element={<ShopCart />} />
               <Route path='/AboutUs' element={<AboutUs />} />
-              {/* <Route path='/Login' element={<Login />} /> */}
-              {/* <Route path='/Reg' element={<Registration />} /> */}
-
-
 
               <Route path='/Login' element={<Login />} />
               <Route path='/signup' element={<Signup />} />
               <Route path='/reset-password' element={<ResetPassword />} />
-              <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
+              <Route path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
               <Route exact path='activate/:uid/:token' element={<Activate />} />
-
 
               <Route path='/MyPage' element={<MyPage />} />
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
@@ -14,15 +14,18 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
   const onSubmit = e => {
     e.preventDefault();
 
     login(email, password);
   };
 
-  if (isAuthenticated) {
-    return navigate('/');
-  }
   return (
     <div className="container px-[10vh] py-[8vh] min-h-[90vh] justify-around flex-wrap rounded-lg lg:px-14 lg:justify-between sm:justify-center sm:px-2 sm:grid-flow-row justify-items-center text-white">
       <h1>Sign in</h1>
